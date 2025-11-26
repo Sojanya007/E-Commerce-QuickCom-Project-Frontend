@@ -1,0 +1,43 @@
+import { useEffect, useState } from "react";
+import Footer from "./Footer";
+import ShowCategory from "./ShowCategory"
+import ProductDetailsCategory from "./ProductDetailsCategory";
+import Header from "./Header";
+import { postData, getData } from "../../../services/FetchNodeAdminServices";
+import { useLocation } from "react-router-dom";
+export default function PageCategoryDisplay() {
+    const [category, setCategory] = useState([])
+    const [refresh,setRefresh]=useState(false)
+    var location = useLocation()
+    var productData = location?.state?.productData
+    // console.log("kkkkkkkk", productData)
+    const fetchAllCategory = async () => {
+        var result = await getData('userinterface/user_display_all_subcategorys')
+        setCategory(result.data)
+    }
+    useEffect(() => {
+        fetchAllCategory()
+    }, [])
+
+    return (<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+
+        <div>
+            <Header />
+        </div>
+
+        
+
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: 35  }}>
+            <span style={{ display: 'flex'}}>
+                <ShowCategory data={category} scid={productData[0]?.subcategoryid} />
+                <ProductDetailsCategory  refresh={refresh} setRefresh={setRefresh} productData={productData} />
+            </span>
+        </div>
+
+        <div>
+            <Footer />
+        </div>
+
+    </div>
+    )
+}
