@@ -1,19 +1,18 @@
-import { FormHelperText, FormControl, InputLabel, Select, MenuItem, Button, Grid, TextField, Avatar } from "@mui/material"
+import { FormHelperText, FormControl, InputLabel, Select, MenuItem, Button, Grid,  Avatar } from "@mui/material"
 import { LoadingButton } from "@mui/lab"
 import logo from '../../../assets/logo.png'
 import cart from '../../../assets/cart.png'
 import SaveIcon from '@mui/icons-material/Save';
 import { useState } from "react"
 import Swal from "sweetalert2"
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { userStyle } from "../adoffers/AdOffersCSS"
-import { postData, currentDate, getData } from "../../../services/FetchNodeAdminServices"
+import { postData, getData } from "../../../services/FetchNodeAdminServices"
 import { useEffect } from "react";
 
 export default function AdOffers(props) {
   var classes = userStyle()
-  const [value, setValue] = useState('');
+  //const [value, setValue] = useState('');
   const [categoryId, setCategoryId] = useState('')
   const [subCategoryId, setSubCategoryId] = useState('')
   const [brandId, setBrandId] = useState('')
