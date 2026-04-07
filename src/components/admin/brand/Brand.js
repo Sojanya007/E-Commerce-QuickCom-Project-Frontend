@@ -10,7 +10,7 @@ import { postData, currentDate, getData } from "../../../services/FetchNodeAdmin
 import { useEffect } from "react";
  
 
-export default function brand(props) {
+export default function Brand(props) {
   var classes = userStyle()
   const [categoryId, setCategoryId] = useState('')
   const [subCategoryId, setSubCategoryId] = useState('')
