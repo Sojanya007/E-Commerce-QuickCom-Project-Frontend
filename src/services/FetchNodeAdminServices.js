@@ -1,5 +1,5 @@
 import axios from "axios";
-const serverURL='https://e-commerce-quickcom-project-backend.onrender.com'
+const serverURL='http://localhost:5000'
 const currentDate=()=>{
     var d=new Date()
     var cd=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
