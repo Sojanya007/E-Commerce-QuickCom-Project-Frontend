@@ -1,5 +1,5 @@
 import axios from "axios";
-const serverURL='http://localhost:5000'
+const serverURL= process.env.REACT_APP_API_URL
 const currentDate=()=>{
     var d=new Date()
     var cd=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
@@ -21,7 +21,7 @@ const postData=async(url,body)=>{
     }
     catch(e)
     {
-     return e.response.data
+     return e.response?.data
     }
 
 }
@@ -35,7 +35,7 @@ const getData=async(url)=>{
     }
     catch(e)
     {
-     return e.response.data
+     return e.response?.data
     }
 
 }
