@@ -13,7 +13,11 @@ export default function PageCategoryDisplay() {
     // console.log("kkkkkkkk", productData)
     const fetchAllCategory = async () => {
         var result = await getData('userinterface/user_display_all_subcategorys')
+         if (result && result.data) {
         setCategory(result.data)
+       } else {
+        setCategory([])
+    }
     }
     useEffect(() => {
         fetchAllCategory()

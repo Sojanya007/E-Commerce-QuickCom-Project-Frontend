@@ -1,18 +1,7 @@
 import { useState } from "react";
 import  AppBar  from "@mui/material/AppBar";
 import Box from "@mui/material/Box/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../../../assets/logo.png';
-import ShoppingCart from "@mui/icons-material/ShoppingCart";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import TextBoxSearch from "./TextBoxSearch";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import MyMenuBar from "./MyMenuBar";
 import { Grid } from "@mui/material";
 
 export default function Footer(){

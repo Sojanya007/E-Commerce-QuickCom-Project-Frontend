@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { Box, Grid, useMediaQuery } from "@mui/material";
-import Paper from "@mui/material/Paper";
+import { Box } from "@mui/material";
 import { serverURL } from "../../../services/FetchNodeAdminServices";
 import { useSelector, useDispatch } from 'react-redux';
-import { useTheme } from "styled-components";
 import PlusMinusButton from "./PlusMinusButton";
 import Divider from "@mui/material/Divider";
 export default function MyCart({ refresh, setRefresh }) {

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { postData, serverURL } from "../../../services/FetchNodeAdminServices";
+import { postData} from "../../../services/FetchNodeAdminServices";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import AppBar from "@mui/material/AppBar";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
@@ -11,9 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignIn(){
 const [phonenumber,setPhoneNumber]=useState('')
- const [genOTP,setGenOTP]=useState('')
-      
-       
+   
 var navigate=useNavigate()
 
 const fetchSmsApi=async(genOTP)=>{
@@ -21,16 +18,30 @@ const fetchSmsApi=async(genOTP)=>{
         otp:genOTP,
         mobileno:phonenumber,
     })
+    if(response)
+    {
+        console.log("OTP sent:",response)
+    }
+    else
+    {
+        console.lof("Failed to send OTP")
+    }
 }
 
 const handleNextPage=()=>{
-    
-        var genOTP=parseInt(Math.random()*89999)+10000
+      
+    if(!phonenumber || phonenumber.length<10)
+    {
+        alert("Please enter valid mobile number")
+        return
+    }
+
+    var genOTP=parseInt(Math.random()*89999)+10000
         alert(genOTP)
-        fetchSmsApi(genOTP)
+    fetchSmsApi(genOTP)
     navigate("/otp",{state:{phonenumber,genOTP}})
 }
-var navigate=useNavigate()
+ 
     return(
          <div>
             <Grid container>

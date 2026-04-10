@@ -8,14 +8,13 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from 'react-redux';
-import { Navigate, useNavigate } from "react-router-dom";
-import { postData,getData } from "../../../services/FetchNodeAdminServices";
+import { useNavigate } from "react-router-dom";
+import { postData } from "../../../services/FetchNodeAdminServices";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import CloseIcon from '@mui/icons-material/Close';
 import Swal from "sweetalert2";
-import useRazorpay from "react-razorpay";
 
  
 export default function PaymentDetails({refresh,setRefresh}){

@@ -1,15 +1,13 @@
 import {useState,useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import { getData,postData,serverURL } from '../../../services/FetchNodeAdminServices';
+import { postData,serverURL } from '../../../services/FetchNodeAdminServices';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 export default function MyDrawer(props) {
     const [category,setCategory]=useState([])
@@ -18,7 +16,11 @@ export default function MyDrawer(props) {
     },[])
     const fetchAllCategory=async()=>{
         var result=await postData('userinterface/user_display_all_category',{status:'limit'})
-       setCategory(result.data)
+       if (result && result.data) {
+        setCategory(result.data)
+       } else {
+        setCategory([])
+    }
     }
 
   const DrawerList = (

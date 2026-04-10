@@ -1,8 +1,6 @@
 import Header from "./Header";
 import MyCart from "./MyCart";
 import PaymentDetails from "./PaymentDetails";
-import { Divider } from "@mui/material";
-import ProductsScroll from "./ProductsScroll";
 import { useState } from "react";
 
 export default function Cart(){

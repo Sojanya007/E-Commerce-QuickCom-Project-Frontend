@@ -17,20 +17,36 @@ export default function HomePage() {
 
     const fetchAllProductDetails = async (productstatus) => {
         var result = await postData('userinterface/display_all_productdetail_by_status',{productstatus})
-       setPopularProducts(result.data)
+       if (result && result.data) {
+        setPopularProducts(result.data)
+       } else {
+        setPopularProducts([])
+    }
     }
 
     const fetchAllOffers = async () => {
         var result = await getData('userinterface/all_adoffers')
+        if (result && result.data) {
         setAdOffer(result.data)
+       } else {
+        setAdOffer([])
+    }
     }
     const fetchAllBanners = async () => {
         var result = await getData('userinterface/show_all_banner')
+        if (result && result.data) {
         setBanners(result.data)
+        } else {
+        setBanners([])
+    }
     }
     const fetchAllBankOffer = async () => {
         var result = await getData('userinterface/show_all_bankoffer')
+        if (result && result.data) {
         setBankOffer(result.data)
+    } else {
+        setBankOffer([])
+    }
     }
     useEffect(function () {
         fetchAllBanners()

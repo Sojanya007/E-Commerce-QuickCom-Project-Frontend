@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import { postData, getData } from '../../../services/FetchNodeAdminServices'
+import { postData} from '../../../services/FetchNodeAdminServices'
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
@@ -28,18 +28,35 @@ export default function MyMenuBar() {
 
   const fetchAllProductDetailsBySubCategory = async (subcategoryid) => {
     var result = await postData('userinterface/user_display_product_details_by_subcategory', { subcategoryid })
+    if(result && result.data)
+    {
     navigate('/pagecategorydisplay', { state: { productData: result.data } })
     console.log("jk",result.data)
+    }
+    else
+    {
+    console.log("No data found or API error")
+    navigate('/pagecategorydisplay', { state: { productData: [] } })
+    
+    }
   }
 
   const fetchAllSubCategory = async (categoryid) => {
     var result = await postData('userinterface/user_get_all_subcategory_by_categoryid', { categoryid })
-    setSubCategory(result.data)
+    if (result && result.data) {
+        setSubCategory(result.data)
+       } else {
+        setSubCategory([])
+    }
   }
 
   const fetchAllCategory = async () => {
     var result = await postData('userinterface/user_display_all_category', { status: 'limit' })
-    setCategory(result.data)
+    if (result && result.data) {
+        setCategory(result.data)
+       } else {
+        setCategory([])
+    }
   }
   useEffect(() => {
     fetchAllCategory()

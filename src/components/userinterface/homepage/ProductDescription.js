@@ -2,33 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Divider, Grid } from "@mui/material";
 import Rating from '@mui/material/Rating';
 import { useTheme } from '@mui/material/styles'; 
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShareIcon from '@mui/icons-material/Share';
-import { grey } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import { postData, serverURL } from "../../../services/FetchNodeAdminServices";
 import Radio from '@mui/material/Radio';
-import { Opacity } from "@mui/icons-material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import parse from 'html-react-parser';
 import Drawer from "@mui/material/Drawer";
 import { useLocation } from "react-router-dom";
 import Button from "@mui/material/Button";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
  
- 
-import List from '@mui/material/List';
- 
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
  
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
  
@@ -57,15 +43,19 @@ export default function ProductDescription({product,setProduct}){
   const handleChange = (event) => {
   setSelectedValue(event.target.value);}
   const [productList,setProductList]=useState([])
-  const [productDetailid,setProductDetailId]=useState(product.productdetailid)
+  const [productDetailid,setProductDetailId]=useState(product?.productdetailid || null)
   const [color,setColor]=useState('#000')
   const fetchAllProductsById=async()=>{
   var response= await postData('userinterface/user_display_product_details_by_id',{productid:product?.productid})
-  setProductList(response.data)
+  setProductList(response?.data || [])
+
   }
   useEffect(()=>{
+    if(product?.productid)
+    {
     fetchAllProductsById()
-  },[])
+    } 
+  },[product])
 
   
  /* const shareProduct=()=>{
@@ -83,7 +73,7 @@ export default function ProductDescription({product,setProduct}){
     const showImages=()=>{
             
               
-      var op=parseInt(((product.price-product.offerprice)/product.price)*100)
+      var op=product?.price ? parseInt(((product.price-product.offerprice)/product.price)*100) : 0
 
                return(
                   
@@ -187,7 +177,7 @@ export default function ProductDescription({product,setProduct}){
            }
 
   const packSize = () => {
-  return productList.map((item) => {
+  return (productList || []).map((item) => {
     const op = parseInt(((item.price - item.offerprice) / item.price) * 100);
 
     return (
@@ -351,7 +341,7 @@ export default function ProductDescription({product,setProduct}){
 
 <Divider style={{marginTop:25,marginLeft:20,width:620}}/>
 
-<div style={{marginLeft:20,marginTop:20,fontSize:15,marginBottom:20}}> {parse(product.productdetaildescription)}</div>
+<div style={{marginLeft:20,marginTop:20,fontSize:15,marginBottom:20}}> {parse(product?.productdetaildescription || "")}</div>
 
  
 

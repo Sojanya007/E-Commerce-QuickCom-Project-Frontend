@@ -8,7 +8,6 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useRef } from "react";
-import { setRef } from "@mui/material";
 
 export default function AdOffers({data}){
     var scrollRef=useRef()

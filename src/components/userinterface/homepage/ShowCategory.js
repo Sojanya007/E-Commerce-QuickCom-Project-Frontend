@@ -70,7 +70,11 @@ export default function ShowCategory({ data, scid }) {
   const [brands, setBrands] = React.useState([])
   const fetchAllBrands = async (subcategoryid) => {
     var result = await postData('userinterface/user_get_all_brand_by_subcategoryid', { subcategoryid: subcategoryid })
-    setBrands(result.data)
+     if (result && result.data) {
+        setBrands(result.data)
+       } else {
+        setBrands([])
+    }
   }
 
 
