@@ -1,5 +1,6 @@
 import axios from "axios";
-const serverURL= process.env.REACT_APP_API_URL
+const serverURL = process.env.REACT_APP_API_URL;
+console.log("SERVER URL:", serverURL);
 const currentDate=()=>{
     var d=new Date()
     var cd=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
