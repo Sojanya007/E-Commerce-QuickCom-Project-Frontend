@@ -34,7 +34,7 @@ export default function MakePayment(){
             currency:"INR",
             name:"QuickCom",
             description:"Test Transaction",
-            image:`http://${serverURL}/images/logo.png`,
+            image:`${serverURL}/images/logo.png`,
 
             handler:(res)=>{
                 console.log(res)

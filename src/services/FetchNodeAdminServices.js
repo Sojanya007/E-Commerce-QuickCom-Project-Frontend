@@ -22,7 +22,8 @@ const postData=async(url,body)=>{
     }
     catch(e)
     {
-     return e.response?.data
+     console.log(e)
+     return {data:[]}
     }
 
 }
