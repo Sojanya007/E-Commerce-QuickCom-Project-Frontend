@@ -16,7 +16,7 @@ const createDate=(date)=>{
 const postData=async(url,body)=>{
     try
     {
-     var response=await axios.post(`${serverURL}/${url}`,body)
+     var response=await axios.post(`${serverURL}/api/${url}`,body)
      var result=response.data
      return result
     }
@@ -28,10 +28,10 @@ const postData=async(url,body)=>{
 
 }
 
-/*const getData=async(url)=>{
+const getData=async(url)=>{
     try
     {
-     var response=await axios.get(`${serverURL}/${url}`)
+     var response=await axios.get(`${serverURL}/api/${url}`)
      var result=response.data
      return result
     }
@@ -41,20 +41,7 @@ const postData=async(url,body)=>{
     }
 
 }
-*/
 
-const getData = async (url) => {
-  try {
-    console.log("FINAL API CALL:", `${serverURL}/${url}`);
-
-    var response = await axios.get(`${serverURL}/${url}`);
-    console.log("API RESPONSE:", response.data);
-
-    return response.data;
-  } catch (e) {
-    console.log("ERROR:", e);
-    return e.response?.data;
-  }
-};
+ 
 
 export{postData,serverURL,currentDate,getData,createDate}
